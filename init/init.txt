@@ -1,0 +1,1 @@
+This folder contains scripts and sample data used to initialize the database during development and testing.
