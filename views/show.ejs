@@ -1,0 +1,101 @@
+<%- layout("/layout/boilerplate") %>
+
+<script>
+  const mapToken = "<%= process.env.MAP_TOKEN%>";
+  const listing = <%- JSON.stringify(listing)%>;
+  const ShowGeoCoding = <%- JSON.stringify(geoCoding) %>;
+</script>
+
+    <div class="row">
+        <div class="col-10 offset-2">
+            <h2>Home Details :</h2>
+        </div>
+        <div class="card col-8 offset-2 show-card" style="width:50rem">
+            <img src="<%=listing.image.url%>" class="card-img show-img" alt="<%=listing.title%> img" style="height:25rem"/>
+            <div class="card-body"> 
+                <i>
+                  <p class="card-text offset-9 col-3"> Home by: <%=listing.owner.username%></p>
+                </i>
+      
+                <u><h2><%=listing.title%></h2></u>
+                <br>
+                <h4>Description: <i><%=listing.description%></i></h4>
+                <p class="card-text">Price - &#8377;<%=listing.price.toLocaleString("en-IN")%></p>
+                <p class="card-text">Location - <%=listing.location%></p>
+                <p class="card-text">Country - <%=listing.country%></p>
+                
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <br>
+
+        
+<div class="d-flex gap-2 offset-2 mt-3  ">
+    <%if(currentUser && currentUser._id.equals(listing.owner._id)){%>   
+    <a href="/listings/<%=listing.id%>/edit">
+        <button class="btn btn-dark">Edit</button>
+    </a>
+
+    <form method="POST" action="/listings/<%=listing.id%>?_method=DELETE">
+        <button class="btn  add-btn">Delete</button>
+    </form>
+    <%}%>
+    <a href="/listing/<%=listing.id%>/review/review-form">
+        <button class="btn btn-dark show-btn offset-1 text-nowrap">Add Review</button>
+    </a>
+</div>
+  
+    <br>
+    <div class="col-8 offset-2">
+      <hr>
+        <h3>All Reviews</h3>
+
+<%
+  let sum = 0;
+  for(let review of listing.reviews) {
+    sum += review.rating;
+  }
+  let avg = listing.reviews.length ? (sum / listing.reviews.length).toFixed(1) : "No reviews yet";
+%>
+
+<p>Avg Rating: <%= avg %>⭐</p>
+
+        <br>
+<div class="row">
+  <%for(review of listing.reviews){%>
+    <div class="col-5 ms-4 mb-2 review-card">
+      <div class="card">
+        <div class="card-body">
+          <u><h4 class="card-text">@<%=review.author.username%></h4></u>
+          <p class="starability-result card-text" data-rating="<%=review.rating%>"></p>
+
+          <p class="card-text"><%=review.comment%></p>
+          <%if(currentUser && review.author._id.equals(currentUser._id)){%>
+            <div>
+                <form action="/listing/<%=listing.id%>/review/<%=review.id%>?_method=DELETE" class="mb-3" method="POST">
+                    <button class="btn btn-dark">Delete</button>
+                </form>
+            </div>
+          <%}%>
+        </div>
+                
+
+      </div>
+    </div>
+  <%}%>
+</div>
+
+<hr>
+
+<div class="col-8 mb-3">
+<h2></h2>
+  <div id="map"></div>
+</div>
+
+</div>
+
+<!-- //Map Script: -->
+<script src="/js/map.js"></script>
+

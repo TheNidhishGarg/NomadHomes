@@ -1,0 +1,13 @@
+<%- layout("/layout/boilerplate") %>
+<body>
+    <h1 class="error-heading alert alert-danger">Something went wrong!</h1>
+    <h2 class="error-heading">Code: <%=statusCode%></h2>
+    <p class="error-heading"><%=message%></p>
+
+    <div class="error-btns">
+        <a href="/listings"><button>Explore</button></a>
+        <a href="/listings/new"><button>Add Home</button></a>
+    </div>
+
+</body>
+</html>

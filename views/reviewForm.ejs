@@ -1,0 +1,61 @@
+<%- layout("/layout/boilerplate") %>
+<body>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <form
+        action="/listing/<%=listing.id%>/review"
+        method="POST"
+        class="needs-validation"
+        novalidate
+      >
+        <h2>Leave a Review:</h2>
+        <br /><br />
+
+        <!-- Rating -->
+        <div class="mb-2">
+          <label for="rating form-label">Rating</label>
+          <fieldset class="starability-grow">
+            <input
+              type="radio"
+              id="no-rate"
+              class="input-no-rate"
+              name="rating"
+              value="1"
+              checked
+              aria-label="No rating."
+            />
+            <input type="radio" id="first-rate1" name="rating" value="1" />
+            <label for="first-rate1" title="Terrible">1 star</label>
+            <input type="radio" id="first-rate2" name="rating" value="2" />
+            <label for="first-rate2" title="Not good">2 stars</label>
+            <input type="radio" id="first-rate3" name="rating" value="3" />
+            <label for="first-rate3" title="Average">3 stars</label>
+            <input type="radio" id="first-rate4" name="rating" value="4" />
+            <label for="first-rate4" title="Very good">4 stars</label>
+            <input type="radio" id="first-rate5" name="rating" value="5" />
+            <label for="first-rate5" title="Amazing">5 stars</label>
+          </fieldset>
+        </div>
+
+        <!-- //Comment -->
+        <div class="mb-3">
+          <label for="comment" class="form-label">Comment</label>
+          <textarea
+            name="comment"
+            class="form-control"
+            id="comment"
+            rows="5"
+            required
+          ></textarea>
+          <div class="invalid-feedback">Comment not present</div>
+        </div>
+
+        <!-- Button   -->
+        <button type="submit" class="btn btn-dark add-btn offset">
+          Submit
+        </button>
+      </form>
+      <br /><br />
+    </div>
+  </div>
+</body>

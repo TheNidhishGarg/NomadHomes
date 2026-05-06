@@ -1,0 +1,59 @@
+<style>
+  .btn-search {
+  background-color: #d84749 !important;
+  color: #fff !important;
+  margin-left: 5px;
+  border-radius: 25px;
+   
+}
+.btn-search:hover {
+  background-color: #d84749 !important;
+  color: #fff !important;
+}
+.input-search{
+  border-radius:25px;
+  padding: 0.5rem 3rem 0.5rem 3rem;
+}
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-tertiary border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"
+      ><img
+        src="/images/NomadHomes_Logo.png"
+        alt="NomadHomes"
+        width="40"
+        height="40"
+    /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings">Explore</a>
+      </div>
+
+      <div class="navbar-nav ms-auto">
+        <form class="d-flex" role="search">
+          <input class="form-control mr-sm-2 input-search" type="search" placeholder="Search Destinations" aria-label="Search">
+          <button class="btn btn-search my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/listings/new">Add Home</a>
+        <% if(currentUser) { %>
+        <a href="/logout" class="btn btn-dark add-btn">Logout</a>
+        <% } else { %>
+        <a href="/signup" class="mt-2 m-2 signup"><b>SignUp</b></a>
+        <a href="/login" class="btn btn-dark add-btn"><b>Login</b></a>
+        <% } %>
+      </div>  
+    </div>
+  </div>
+</nav>

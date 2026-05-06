@@ -1,0 +1,44 @@
+<%- layout("/layout/boilerplate") %>
+
+<div class="row mt-3">
+    <div class="col-6 offset-3">
+        <h1 class="text-center">SignUp</h1>
+        <hr>
+        <form action="/signup" method="POST" class="needs-validation" novalidate>
+            <!-- // username -->
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input
+            name="username"
+            class="form-control"
+            required
+            ></input>
+        <div class="invalid-feedback">Username must not be empty!</div>
+        
+        </div>
+            <!-- //Email -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+            name="email"
+            class="form-control"
+            required
+            ></input>
+        <div class="invalid-feedback">Email must not be empty!</div>
+        </div>
+            <!-- //Password -->
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+            name="password"
+            class="form-control"
+            type="password"
+            required
+            ></input>
+        <div class="invalid-feedback">Password must not be empty!</div>
+        </div>  
+        <p>Already have an account?<a class="text-red" href="/login">Login</a></p>
+        <button type="submit" class="btn btn-success">SignUp</button>
+        </form>
+    </div>
+</div>

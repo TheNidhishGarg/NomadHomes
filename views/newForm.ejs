@@ -1,0 +1,88 @@
+<%- layout("/layout/boilerplate") %>
+<body>
+<div class="row">
+    <div class="col-8 offset-2 ">
+    <form action="/listings" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+        <h2>Create a New Home:</h2>
+        
+      <!-- Title -->
+      <div class="mb-3">
+        <label for="title" class="form-label ">Title</label>
+        <input
+            name="title"
+            class="form-control"
+            placeholder="enter title (Sunset Hotels)"
+            required
+        ></input>
+        <div class="invalid-feedback">Title not present</div>
+      </div>
+
+      <!-- //Description -->
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+              name="description"
+              class="form-control"
+              required
+          ></textarea>
+          <div class="invalid-feedback">Description not present</div>
+        </div>
+
+    <!-- //ImageUrl -->
+
+      <div class="mb-3">
+        <label for="imageUrl" class="form-label"> Upload Image</label>
+        <input
+            name="imageUrl"
+            type="file"
+            class="form-control"
+            required
+        ></input>
+      </div>
+
+      <div class="row">
+              <!-- //price -->
+                <div class="mb-3 col-md-4">
+                  <label for="price" class="form-label">Price</label>
+                  <input
+                      
+                      name="price"
+                      class="form-control"
+                      placeholder="enter price (500)"
+                      required
+                  ></input>
+                  <div class="invalid-feedback">Price not present</div>
+                </div>
+              
+              <!-- //Country -->
+                <div class="mb-3 col-md-8">
+                  <label for="country" class="form-label">Country</label>
+                  <input
+                      name="country"
+                      class="form-control"
+                      placeholder="enter country (India)"
+                      required
+                  ></input>
+                  <div class="invalid-feedback">Country not present</div>
+                </div>
+      </div>
+
+    <!-- //Location -->
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input
+            name="location"
+            class="form-control"
+            placeholder="enter location (Kasol,Himachal Pradesh)"
+            required
+        ></input>
+        <div class="invalid-feedback">Location not present</div>
+      </div>
+      <br>
+    <!-- Button   -->
+      <button type="submit" class="btn btn-dark add-btn">Add</button>
+    </form>
+    <br><br>
+    </div>
+</div>
+</body>
