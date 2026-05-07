@@ -9,6 +9,7 @@ const coords =
     ? listing.geometry.coordinates
     : ShowGeoCoding;
 console.log("coords:", coords);
+
 const map = new mapboxgl.Map({
   container: "map", // container ID
   style: "mapbox://styles/mapbox/streets-v12",

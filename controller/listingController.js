@@ -106,10 +106,21 @@ module.exports.updateHome = async (req, res) => {
       filename: req.file.filename,
     };
   }
-
-  await Listing.findByIdAndUpdate(id, { ...req.body });
+  let response = await geocodingClient
+    .forwardGeocode({
+      query: location,
+      limit: 1,
+    })
+    .send();
+  let geoCoding = response.body.features[0].geometry;
+  await Listing.findByIdAndUpdate(id, { ...req.body, geometry: geoCoding });
   const listing = await Listing.findById(id);
-  res.render("show.ejs", { listing, title: `NomadHomes - ${listing.title}` });
+
+  res.render("show.ejs", {
+    listing,
+    geoCoding,
+    title: `NomadHomes - ${listing.title}`,
+  });
 };
 
 module.exports.deleteHome = async (req, res) => {
