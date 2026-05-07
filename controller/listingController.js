@@ -114,7 +114,14 @@ module.exports.updateHome = async (req, res) => {
     .send();
   let geoCoding = response.body.features[0].geometry;
   await Listing.findByIdAndUpdate(id, { ...req.body, geometry: geoCoding });
-  const listing = await Listing.findById(id);
+  const listing = await Listing.findById(id)
+    .populate({
+      path: "reviews",
+      populate: {
+        path: "author",
+      },
+    })
+    .populate("owner");
 
   res.render("show.ejs", {
     listing,
